@@ -1,16 +1,17 @@
-use std::fs::File;
 use std::env;
 
 mod day1;
+mod day2;
 
 fn main() {
-    let file = read_file();
-    day1::do_day1(file);
+    select_day();
 }
 
-fn read_file() -> File {
+fn select_day() {
     let args: Vec<String> = env::args().collect();
-    let file = File::open(&args[1]).unwrap();
-    file
+    match &args[1].parse::<i32>().unwrap() {
+        1 => day1::do_day1(&args[2]),
+        2 => day2::do_day2(&args[2]),
+        _ => (),
+    }
 }
-

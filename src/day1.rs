@@ -1,7 +1,8 @@
 use std::io::{BufRead, BufReader};
 use std::fs::File;
 
-pub fn do_day1(file: File) {
+pub fn do_day1(file: &String) {
+    let file = File::open(file).unwrap();
     let reader = BufReader::new(file);
     let numbers = read_integers(reader);
 
