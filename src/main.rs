@@ -1,31 +1,15 @@
-use std::io::{BufRead, BufReader};
+use std::io::BufReader;
 use std::fs::File;
 use std::env;
 
+mod day1;
+
 fn main() {
     let reader = read_file();
-    let ints = read_integers(reader);
-    let day1_sum = calc_day1(ints);
+    let ints = day1::read_integers(reader);
     
-    println!("Day 1 sum: {}", day1_sum);
-}
-
-fn calc_day2(numbers: Vec<i32>) -> i32 {
-    let mut sum = 0;
-    for number in numbers {
-        
-    }
-}
-
-fn calc_day1(numbers: Vec<i32>) -> i32 {
-    let mut sum = 0;
-    for number in numbers {
-        let mut temp = number;
-        temp /= 3;
-        temp -= 2;
-        sum += temp;
-    }
-    sum
+    println!("Day 1 sum: {}", day1::calc_1(&ints));
+    println!("Day 1 part 2 sum: {}", day1::calc_2(&ints));
 }
 
 fn read_file() -> BufReader<File> {
@@ -35,10 +19,3 @@ fn read_file() -> BufReader<File> {
     reader
 }
 
-fn read_integers(reader: BufReader<File>) -> Vec<i32> {
-    let mut ints: Vec<i32> = Vec::new();
-    for line in reader.lines() {
-        ints.push(line.unwrap().parse::<i32>().unwrap());
-    }
-    ints
-}
