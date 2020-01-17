@@ -13,8 +13,8 @@ pub fn do_day2(filename: &String) {
         for j in 0..100 {
             let output = run_program(data.clone(), i, j);
             if output[0] == 19690720 {
-                println!("Part 2 input 1: {} input 2: {}", i, j);
-                break outer;
+                println!("Part 2 input 1: {} input 2: {} answer: {}", i, j, 100 * i + j);
+                break 'outer;
             }
         }
     }
@@ -49,7 +49,6 @@ fn run_program(mut data: Vec<i32>, input1: i32, input2: i32) -> Vec<i32> {
                 data[dest as usize] = source;
             },
             99 => {
-                println!("Program end");
                 break;
             }
             _ => {
